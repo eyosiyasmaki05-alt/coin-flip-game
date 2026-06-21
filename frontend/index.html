@@ -1,0 +1,78 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto-Fair Multi-layered Coin Flip Game</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #121214; color: #e1e1e6; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #202024; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+        .pool-counter { font-size: 24px; color: #00e676; font-weight: bold; margin-bottom: 20px; }
+        .btn { background: #6200ee; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; margin: 5px; font-size: 16px;}
+        .btn:hover { background: #7c4dff; }
+        .btn-heads { background: #e5a93c; }
+        .btn-tails { background: #3c8de5; }
+        .status-box { background: #29292e; border: 1px solid #323238; border-radius: 6px; padding: 15px; margin: 20px 0; min-height: 50px; text-align: left; }
+        .player-card { display: inline-block; width: 45%; background: #29292e; padding: 10px; border-radius: 8px; margin: 2.5%; box-sizing: border-box;}
+        .premium-shop { border-top: 2px dashed #323238; margin-top: 30px; padding-top: 20px; }
+        .active-selection { border: 2px solid #00e676; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🪙 Global Multi-Pool Coin Flip</h1>
+    <div class="pool-counter">SYSTEM POOL: <span id="pool-display">1,000,000</span> COINS</div>
+    
+    <div id="lobby-view">
+        <p>Connect and compete in real-time tournaments. High stakes, provably fair engine tracking.</p>
+        <button class="btn" onclick="connectToLobby()">FIND MULTIPLAYER MATCH</button>
+    </div>
+
+    <div id="game-view" style="display: none;">
+        <div>
+            <div class="player-card" id="local-card">
+                <h3>You (P1)</h3>
+                <p>Coins: <span id="local-coins">0</span></p>
+                <p>Streak: <span id="local-streak">0</span></p>
+                <p>Skin: <span id="local-skin">Default</span></p>
+            </div>
+            <div class="player-card" id="enemy-card">
+                <h3>Opponent (P2)</h3>
+                <p>Coins: <span id="enemy-coins">0</span></p>
+                <p>Streak: <span id="enemy-streak">0</span></p>
+                <p>Skin: <span id="enemy-skin">Default</span></p>
+            </div>
+        </div>
+
+        <h2 id="coin-graphic" style="font-size: 48px; margin: 20px;">🪙</h2>
+
+        <h3>Choose Your Side:</h3>
+        <button class="btn btn-heads" onclick="selectChoice('heads')">HEADS</button>
+        <button class="btn btn-tails" onclick="selectChoice('tails')">TAILS</button>
+
+        <div style="margin: 15px 0;">
+            <label><input type="checkbox" id="double-flip-cb"> ⚡ Double Flip Mode (Double or Nothing Risk)</label><br>
+            <label><input type="checkbox" id="steal-card-cb"> 🃏 Use Steal Coin Card</label>
+        </div>
+
+        <button class="btn" style="background:#00e676; color:#000;" onclick="submitTurnMove()">LOCK IN CHOICE</button>
+    </div>
+
+    <div class="status-box">
+        <strong>Game Ledger Logs:</strong>
+        <div id="log-output">Awaiting server initialization...</div>
+    </div>
+
+    <!-- Monetization Framework Panel Layer -->
+    <div class="premium-shop">
+        <h3>🏪 Game Shop &amp; Monetization Hub</h3>
+        <button class="btn" style="background:#cf6679;" onclick="triggerAdSimulation()">🎬 Watch Video Ad (+2 Extra Coins)</button>
+        <button class="btn" style="background:#03dac6; color:#000;" onclick="purchaseSkin('Gold_Glitch')">✨ Buy Premium Gold Skin (Costs 50 Coins)</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
